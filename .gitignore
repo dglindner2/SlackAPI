@@ -1,0 +1,8 @@
+# Ignore virtual environment
+slack/
+
+# Store variables in local file for now
+env_variables.py
+
+# Ignore compiled Python files
+*.pyc
