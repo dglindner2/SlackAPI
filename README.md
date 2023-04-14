@@ -15,11 +15,10 @@ You will then be asked to name your application and to choose your desired works
 
 ### Adding Features and Functionality
 
-There are six different pages where you can add features and functionalities for your Slack Application. We will use four of them for SlackGPT. 
+There are six different pages where you can add features and functionalities for your Slack Application. We will use three of them for SlackGPT. 
 
 - Incoming Webhooks
 - Event Subscriptions
-- Bots
 - Permissions
 
 ![Features and Functionality](/images/features_functionality.jpg)
@@ -43,7 +42,7 @@ If you're developing locally like I am, you can use the service **ngrok** to cre
 
 If you have Homebrew installed, you can simply install ngrok by entering 
 
-`brew install ngrok`
+`$ brew install ngrok`
 
 in the terminal. You can also visit [the ngrok website](https://ngrok.com/download) where you can download a ZIP file. 
 
@@ -55,7 +54,7 @@ Enter your token in your terminal to authenticate your ngrok agent.
 
 To run ngrok, enter the following line of code into your terminal with your desired port number:
 
-`ngrok http <PORT-NUMBER>`
+`$ ngrok http <PORT-NUMBER>`
 
 You will use the Forwarding URL that is returned in your terminal as the Request URL. The Web Interface provided in the output will allow you to see any requests. 
 
@@ -89,23 +88,33 @@ The Request URL for the Slack API from this example would now be "https://3cd5-2
 
 You should now get a *Verified* checkmark next to your Request URL on the Slack API webpage. 
 
+If you want to subscribe to receive events such as your app being mentioned in a message, scroll down to **Subscribe to bot events**. Add the event name `app_mention`.
 
-#### Bots
-
-
+![Subscribe to Events](/images/subscribe_to_events.jpg)
 
 #### Permissions
 
+Navigate to the **OAuth & Permissions** tab to add scopes for your Slack Application. For our task of reading messages you are tagged in and responding to them, you will just need the three following scopes: *app_mentions:read*, *chat:write*, *channels:read*. There are many other scopes that you can add depending on the goal of your application. 
 
-#### Create a new Application in the Desired Workspace
+Scroll down to the **Scopes** section, select **Bot Token Scopes** and add the three scopes needed. 
 
-- Turn *Activate Incoming Webhook* on
-- Navigate to bottom of screen and select *Add New Webhook to Workspace*
-- Select the channel the bot should be posting 
-- To get the Channel ID, click the dropdown menu on any channel and scroll to the bottom. 
+![Scopes](/images/scopes.jpg)
 
+Once you have added these permission scopes, you will need to reinstall the app for the changes to take effect. We want to allow the app to post in the `Dev Testing` workspace and in the `slack-api` channel.  
 
+![Grant Permissions](/images/reinstall_app.jpg)
 
-#### Adding Scopes
+Additionally on the **OAuth & Permissions** tab, you will need to save your **Bot User OAuth Token**. This will be used to initialize the client in your Python script and to post messages to Slack. 
 
-Navigate to the **OAuth & Permissions** tab to add scopes for your Slack Application. For reading messages you are tagged in and responding to them, you will just need the three following scopes: *app_mentions:read*, *chat:write*, *channels:read*. There are many other scopes that you can add depending on the goal of your application. 
+## OpenAI
+
+The other half of this application is integrating in the OpenAI API for ChatGPT. We can create a developer account on OpenAI [here.](https://platform.openai.com/)
+
+Once you have created your account, navigate to the [API Keys page](https://platform.openai.com/account/api-keys) to generate a new secret key for the project. Save this key somewhere safe because it will not be displayed again after it is generated. 
+
+### Integrating ChatGPT into Slack API
+
+You first need to update the code from above to handle when the bot is tagged in a message. These changes are all noted in the `run.py` script in the repository. With the two terminals running (ngrok and `run.py`), you can test out the application in Slack. Pull up the Slack Channel that you have connected and tag your application in a message. Your bot should respond with a message from ChatGPT. Here is an example from my app:
+
+![SlackGPT](/images/SlackGPT.jpg)
+
