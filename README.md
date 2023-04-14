@@ -1,6 +1,6 @@
-# Slack Developer Work
+# Slack API Walk-Through with ChatGPT Integration
 
-This repository is a walk-through on how to develop Slack applications. This is a simple application that will allow an App to read messages it is tagged in, pass the message to the OpenAI API, and post back in the Slack Channel the response from ChatGPT.
+This repository is a walk-through on how to develop Slack applications. This is a simple application that will allow an App to read messages it is tagged in, pass the message to the OpenAI API, and post back in the Slack Channel the response from the application, `SlackGPT`.
 
 
 ### Creating a Slack Application
