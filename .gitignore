@@ -3,6 +3,7 @@ slack/
 
 # Store variables in local file for now
 env_variables.py
+chat.py
 
 # Ignore compiled Python files
 *.pyc

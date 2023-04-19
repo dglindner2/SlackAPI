@@ -84,6 +84,8 @@ if __name__ == '__main__':
 
 It is important to note that the port provided in the last line of the code matches the port specified in the ngrok terminal command. 
 
+**Note:** Make sure you have installed the requirements in your terminal before beginning. This can be done with the line `$ pip install -r requirements.txt`.
+
 The Request URL for the Slack API from this example would now be "https://3cd5-2620-1f7-8ff-c4c-ac2c-72b7-c1b6-1da5.ngrok-free.app/slack/events". This is the Forwarding URL followed by `/slack/events` as specified in our Python script. 
 
 You should now get a *Verified* checkmark next to your Request URL on the Slack API webpage. 
@@ -111,6 +113,8 @@ Additionally on the **OAuth & Permissions** tab, you will need to save your **Bo
 The other half of this application is integrating in the OpenAI API for ChatGPT. We can create a developer account on OpenAI [here.](https://platform.openai.com/)
 
 Once you have created your account, navigate to the [API Keys page](https://platform.openai.com/account/api-keys) to generate a new secret key for the project. Save this key somewhere safe because it will not be displayed again after it is generated. 
+
+The API does cost money, but you will be provided with $5 of free credit upon the creation of your account. These calls for the application are cheap and the free credit will be more than enough to keep your Slack Bot running. 
 
 ### Integrating ChatGPT into Slack API
 
