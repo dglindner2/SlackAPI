@@ -96,7 +96,7 @@ If you want to subscribe to receive events such as your app being mentioned in a
 
 #### Permissions
 
-Navigate to the **OAuth & Permissions** tab to add scopes for your Slack Application. For our task of reading messages you are tagged in and responding to them, you will just need the three following scopes: *app_mentions:read*, *chat:write*, *channels:read*. There are many other scopes that you can add depending on the goal of your application. 
+Navigate to the **OAuth & Permissions** tab to add scopes for your Slack Application. For our task of reading messages the bot is tagged in and responding to them in a Slack thread, you will just need the four following scopes: *app_mentions:read*, *chat:write*, *channels:read*, and *channels:history*. There are many other scopes that you can add depending on the goal of your application. 
 
 Scroll down to the **Scopes** section, select **Bot Token Scopes** and add the three scopes needed. 
 
