@@ -122,3 +122,16 @@ You first need to update the code from above to handle when the bot is tagged in
 
 ![SlackGPT](/images/SlackGPT.jpg)
 
+### Responding to messages in thread and ChatGPT remembering Conversation History
+
+(04/24) I have added functionality to this bot to respond to any message by starting a thread, to remember the conversation history for back-and-forth dialogue, and to limit the max number of tokens that can be input to the OpenAI API to reduce the costs of hitting the API. 
+
+**Conversation Memory** can be accomplished by calling the `.conversations_replies()` method from the Slack API. By passing the conversation history to the OpenAI API, ChatGPT is able to "recall" previous messages in the thread. The conversation history is passed to OpenAI following a specific format where the User's messages look like 
+
+`{"role":"user", "content":<YOUR-SLACK-MESSAGE>}`
+
+and ChatGPT's messages look like
+
+`{"role":"assistant", "content":<CHAT-GPT-RESPONSE>}`
+
+**Slack Threads** are handled by the Slack API by the channel and the original message timestamp. By including the timestamp of the message in the `thread_ts` parameter of the `chat_postMessage()` method, you can respond to the original message in a thread. This is useful for keeping the channel organized so SlackGPT can have a focused conversation retaining only relevant message towards the conversation. A new topic that does not relate to the thread should be posted as a new message in the channel. 
